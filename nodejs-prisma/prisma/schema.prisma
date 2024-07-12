@@ -1,0 +1,30 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model general {
+  id   Int     @id @default(autoincrement())
+  name String  @db.VarChar(50)
+  age  Int?
+  bio  String? @db.VarChar(250)
+}
+
+model soldier {
+  id             Int              @id @default(autoincrement())
+  name           String           @db.VarChar(50)
+  age            Int?
+  rank           String?
+  core_commander core_commander[]
+}
+
+model core_commander {
+  id    Int      @id @default(autoincrement())
+  count Int
+  time  DateTime @default(now())
+  bio   soldier  @relation(fields: [id], references: [id])
+}

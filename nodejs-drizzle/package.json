@@ -1,0 +1,23 @@
+{
+  "name": "postgresql-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "migration-generate": "drizzle-kit generate:pg --schema=./schema.js --out=migrations",
+    "migration-config-push": "drizzle-kit push:pg --config=drizzle.config.js",
+    "migration-config-pull": "drizzle-kit introspect:pg --config=drizzle.config.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "drizzle-orm": "^0.28.6",
+    "postgres": "^3.4.0"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.19.13"
+  }
+}
